@@ -11,7 +11,7 @@ import lombok.Getter;
 // @Component // IoC(제어의 역전)
 //@Configuration  // IoC
 //@Service
-//@Repository
+@Repository
 public class Robot {
 	
 	private String name = "건담";
