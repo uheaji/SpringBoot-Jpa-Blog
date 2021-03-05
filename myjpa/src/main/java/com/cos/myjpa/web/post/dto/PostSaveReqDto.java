@@ -1,4 +1,4 @@
-package com.cos.myjpa.web.Post.dto;
+package com.cos.myjpa.web.post.dto;
 
 import com.cos.myjpa.domain.post.Post;
 
