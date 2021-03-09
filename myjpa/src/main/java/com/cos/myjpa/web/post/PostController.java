@@ -40,6 +40,7 @@ public class PostController {
 	private final HttpSession session;
 	private final EntityManager em;
 
+	 // 인증만 필요
 	@PostMapping("/post")
 	public CommonRespDto<?> save(@RequestBody PostSaveReqDto postSaveReqDto) { // title, content
 		User principal = (User) session.getAttribute("principal");
@@ -51,22 +52,26 @@ public class PostController {
 		return new CommonRespDto<>(1, "성공", postService.글쓰기(postSaveReqDto, principal));
 	}
 
+	 // 인증만 필요
 	// http://localhost:8080/post/1
 	@GetMapping("/post/{id}")
 	public CommonRespDto<?> findById(@PathVariable Long id) {
 		return new CommonRespDto<>(1, "성공", postService.한건찾기(id)); // MessageConveter가 모든 getter를 다 호출해서 JSON으로 만들어준다.
 	}
 
+	 // 인증만 필요
 	@GetMapping("/post")
 	public CommonRespDto<?> findAll() {
 		return new CommonRespDto<>(1, "성공", postService.전체찾기());
 	}
 
+	// 인증(Authentication) 필요 + 권한(Authorization)이 필요하다!
 	@PutMapping("/post/{id}")
 	public CommonRespDto<?> update(@PathVariable Long id, @RequestBody PostUpdateReqDto postUpdateReqDto) {
 		return new CommonRespDto<>(1, "성공", postService.글수정하기(id, postUpdateReqDto));
 	}
 
+	// 인증(Authentication) 필요 + 권한(Authorization)이 필요하다!
 	@DeleteMapping("/post/{id}")
 	public CommonRespDto<?> deleteById(@PathVariable Long id) { // 성공하면 리턴x, 실패하면 illegalexception 발생
 		postService.글삭제하기(id);
