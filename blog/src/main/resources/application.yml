@@ -32,3 +32,14 @@ spring:
     serialization:
       fail-on-empty-beans: false
       
+  security:
+    oauth2:
+      client:
+        registration:
+          google: 
+            client-id: 331908034479-uiq1ubnfd3ilh9vrh955het60bsnljvq.apps.googleusercontent.com
+            client-secret: _ixwc027_WvB3hM_np_i5tjg
+            scope:
+            - email
+            - profile
+      
