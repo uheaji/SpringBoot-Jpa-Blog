@@ -1,5 +1,6 @@
 package com.cos.blog.config.oauth;
 
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +12,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import com.cos.blog.config.auth.PrincipalDetails;
+import com.cos.blog.domain.user.RoleType;
 import com.cos.blog.domain.user.User;
 import com.cos.blog.domain.user.UserRepository;
 
@@ -43,6 +45,8 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService {
 			oAuth2UserInfo = new GoogleInfo(oAuth2User.getAttributes());
 		} else if (userRequest.getClientRegistration().getClientName().equals("Faceboook")) {
 			oAuth2UserInfo = new FacebookInfo(oAuth2User.getAttributes());
+		} else if (userRequest.getClientRegistration().getClientName().equals("Naver")) {
+			oAuth2UserInfo = new NaverInfo((Map)(oAuth2User.getAttributes().get("response")));
 		}
 		
 		// 2번) 최초: 회원가입 + 로그인 / 최초x : 로그인
@@ -56,6 +60,7 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService {
 					.username(oAuth2UserInfo.getUsername())
 					.password(encPassword)
 					.email(oAuth2UserInfo.getEmail())
+					.role(RoleType.USER)
 					.build();
 			userEntity= userRepository.save(user);
 			return new PrincipalDetails(userEntity, oAuth2User.getAttributes());
