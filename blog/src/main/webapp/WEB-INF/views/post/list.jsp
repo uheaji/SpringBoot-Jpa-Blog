@@ -6,33 +6,36 @@
 	<c:forEach var="post" items="${posts.content}">
 		<div class="card">
 			<div class="card-body">
+				<div class = "d-flex justify-content-between">
 				<h4 class="card-title">${post.title}</h4>
-				<a href="/post/${post.id}" class="btn btn-primary stretched-link">상세보기</a>
+				<p>작성자 : ${post.user.username}</p>
 			</div>
+			<a href="/post/${post.id}" class="btn btn-primary stretched-link">상세보기</a>
 		</div>
-		<br>
+</div>
+<br>
 
-	</c:forEach>
+</c:forEach>
 
-	<ul class="pagination justify-content-center">
-		<c:choose>
-			<c:when test="${posts.first}">
-				<li class="page-item disabled"><a class="page-link" >Previous</a></li>
-			</c:when>
-			<c:otherwise>
-				<li class="page-item"><a class="page-link" href="?page=${posts.number-1 }">Previous</a></li>
-			</c:otherwise>
-		</c:choose>
-		<c:choose>
-			<c:when test="${posts.last}">
-				<li class="page-item disabled"><a class="page-link" >Next</a></li>
-			</c:when>
-			<c:otherwise>
-				<li class="page-item"><a class="page-link" href="?page=${posts.number+1 }">Next</a></li>
-			</c:otherwise>
-		</c:choose>
+<ul class="pagination justify-content-center">
+	<c:choose>
+		<c:when test="${posts.first}">
+			<li class="page-item disabled"><a class="page-link">Previous</a></li>
+		</c:when>
+		<c:otherwise>
+			<li class="page-item"><a class="page-link" href="?page=${posts.number-1 }">Previous</a></li>
+		</c:otherwise>
+	</c:choose>
+	<c:choose>
+		<c:when test="${posts.last}">
+			<li class="page-item disabled"><a class="page-link">Next</a></li>
+		</c:when>
+		<c:otherwise>
+			<li class="page-item"><a class="page-link" href="?page=${posts.number+1 }">Next</a></li>
+		</c:otherwise>
+	</c:choose>
 
 
-	</ul>
+</ul>
 </div>
 <%@include file="../layout/footer.jsp"%>

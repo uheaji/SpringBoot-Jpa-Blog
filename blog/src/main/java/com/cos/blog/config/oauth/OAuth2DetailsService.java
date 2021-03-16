@@ -47,6 +47,8 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService {
 			oAuth2UserInfo = new FacebookInfo(oAuth2User.getAttributes());
 		} else if (userRequest.getClientRegistration().getClientName().equals("Naver")) {
 			oAuth2UserInfo = new NaverInfo((Map)(oAuth2User.getAttributes().get("response")));
+		}  else if (userRequest.getClientRegistration().getClientName().equals("Kakao")) {
+			oAuth2UserInfo = new KakaoInfo((Map)(oAuth2User.getAttributes().get("response")));
 		}
 		
 		// 2번) 최초: 회원가입 + 로그인 / 최초x : 로그인
