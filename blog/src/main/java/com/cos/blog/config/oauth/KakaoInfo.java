@@ -2,7 +2,6 @@ package com.cos.blog.config.oauth;
 
 import java.util.Map;
 
-
 public class KakaoInfo extends OAuth2UserInfo{
 
 	public KakaoInfo(Map<String, Object> attributes) {

@@ -32,7 +32,10 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService {
 		// 1. AccessToken으로 회원정보를 받았다는 의미
 		OAuth2User oAuth2User = super.loadUser(userRequest);
 
+		// 레트로핏 https://www.googleapis.com/drive/v2/files?access_token=userRequest.getAccessToken().getTokenValue()
+		System.out.println("=========================================");
 		System.out.println(oAuth2User.getAttributes());
+		System.out.println("=========================================");
 		return processOAuth2User(userRequest, oAuth2User);
 	}
 
@@ -47,8 +50,8 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService {
 			oAuth2UserInfo = new FacebookInfo(oAuth2User.getAttributes());
 		} else if (userRequest.getClientRegistration().getClientName().equals("Naver")) {
 			oAuth2UserInfo = new NaverInfo((Map)(oAuth2User.getAttributes().get("response")));
-		}  else if (userRequest.getClientRegistration().getClientName().equals("Kakao")) {
-			oAuth2UserInfo = new KakaoInfo((Map)(oAuth2User.getAttributes().get("response")));
+		}  else if(userRequest.getClientRegistration().getClientName().equals("Kakao")) {
+			oAuth2UserInfo = new KakaoInfo((Map)(oAuth2User.getAttributes()));
 		}
 		
 		// 2번) 최초: 회원가입 + 로그인 / 최초x : 로그인
@@ -67,6 +70,7 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService {
 			userEntity= userRepository.save(user);
 			return new PrincipalDetails(userEntity, oAuth2User.getAttributes());
 		} else { // 이미 회원가입이 완료됐다는 뜻(원래는 구글 정보가 변경될 수 있기 때문에 update 해야된다)
+			System.out.println("회원정보가 있습니다. 바로 로그인 합니다.");
 			return new PrincipalDetails(userEntity, oAuth2User.getAttributes());
 		}
 	}

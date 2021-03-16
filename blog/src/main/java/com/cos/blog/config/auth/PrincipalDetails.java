@@ -17,6 +17,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 
 	private User user;
 	private Map<String, Object> attributes; // OAuth제공자로부터 받은 회원정보
+	private boolean oauth = false;
 
 	public PrincipalDetails(User user) {
 		this.user = user;
@@ -25,6 +26,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 	public PrincipalDetails(User user, Map<String, Object> attributes) {
 		this.user = user;
 		this.attributes = attributes;
+		this.oauth = true;
 	}
 	
 
@@ -70,7 +72,6 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-
 		Collection<GrantedAuthority> collectors = new ArrayList<>();
 		collectors.add(() -> "ROLE_" + user.getRole().toString());
 		return collectors;
