@@ -2,7 +2,6 @@ package com.cos.test.domain.player;
 
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;

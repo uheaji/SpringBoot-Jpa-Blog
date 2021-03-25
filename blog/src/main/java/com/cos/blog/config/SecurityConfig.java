@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers("/user/**", "/post/**")
+		http.authorizeRequests().antMatchers("/user/**", "/post/**", "/reply/**")
 				.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')") // ROLE_는 강제성이 있음.
 				.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')").anyRequest().permitAll()
 				.and()

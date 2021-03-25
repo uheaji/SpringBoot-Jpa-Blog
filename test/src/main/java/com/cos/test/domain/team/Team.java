@@ -40,6 +40,7 @@ public class Team {
 	private Stadium stadium;
 	
 	
+	
 	@CreationTimestamp
 	private Timestamp createDate;
 }

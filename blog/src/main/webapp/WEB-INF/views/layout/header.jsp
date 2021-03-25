@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal"  var="principal"/>
+	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 
 <!DOCTYPE html>
@@ -23,35 +23,44 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-		<!-- Brand -->
-		<a class="navbar-brand" href="/">Blog</a>
 
-		<!-- Toggler/collapsibe Button -->
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#collapsibleNavbar">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/">Blog</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+			aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<c:choose>
 			<c:when test="${empty principal}">
-				<div class="collapse navbar-collapse" id="collapsibleNavbar">
-					<ul class="navbar-nav">
+				<div class="collapse navbar-collapse" id="navbarColor03">
+					<ul class="navbar-nav mr-auto">
 						<li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
 						<li class="nav-item"><a class="nav-link" href="/joinForm">회원가입</a></li>
 					</ul>
+
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="text" placeholder="Search">
+						<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+					</form>
 				</div>
 			</c:when>
+
 			<c:otherwise>
-				<div class="collapse navbar-collapse" id="collapsibleNavbar">
-					<ul class="navbar-nav">
+				<div class="collapse navbar-collapse" id="navbarColor03">
+					<ul class="navbar-nav mr-auto">
 						<li class="nav-item"><a class="nav-link" href="/post/saveForm">글쓰기</a></li>
 						<li class="nav-item"><a class="nav-link" href="/user/${principal.user.id}">회원정보보기</a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
 					</ul>
+
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="text" placeholder="Search">
+						<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+					</form>
 				</div>
 			</c:otherwise>
 		</c:choose>
-
 	</nav>
+
 	<br />
