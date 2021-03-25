@@ -1,9 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<br />
-<div class="jumbotron text-center" style="margin-bottom: 0">
-	<p>Created by Cos</p>
-	<p>📞 010-2222-7777</p>
-	<p>🏴 부산 수영구 XX동</p>
-</div>
+<!-- Footer -->
+<hr/>
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<ul class="list-inline text-center">
+					<li class="list-inline-item"><a href="#"> <span class="fa-stack fa-lg"> <i
+								class="fas fa-circle fa-stack-2x"></i> <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+						</span>
+					</a></li>
+					<li class="list-inline-item"><a href="#"> <span class="fa-stack fa-lg"> <i
+								class="fas fa-circle fa-stack-2x"></i> <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+						</span>
+					</a></li>
+					<li class="list-inline-item"><a href="https://github.com/uheaji"> <span class="fa-stack fa-lg"> <i
+								class="fas fa-circle fa-stack-2x"></i> <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+						</span>
+					</a></li>
+				</ul>
+				<p class="copyright text-muted">Copyright &copy; Your Website 2020</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="../resources/vendor/jquery/jquery.min.js"></script>
+<script src="../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="../resources/js/clean-blog.min.js"></script>
+
 </body>
+
 </html>
